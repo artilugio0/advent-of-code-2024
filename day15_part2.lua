@@ -47,13 +47,13 @@ local function can_move(map, r, c, move)
 			return can_move_left and can_move_right
 		end
 	end
-	return r, c, false
+	return false
 end
 
 local function move_cell(map, r, c, move)
 	move = string.lower(move)
 	if not can_move(map, r, c, move) then
-		return r, c, false
+		return r, c
 	end
 
 	if move == "<" then
@@ -62,14 +62,14 @@ local function move_cell(map, r, c, move)
 		end
 		map[r][c - 1] = map[r][c]
 		map[r][c] = "."
-		return r, c - 1, false
+		return r, c - 1
 	elseif move == ">" then
 		if map[r][c + 1] ~= "." then
 			move_cell(map, r, c + 1, move)
 		end
 		map[r][c + 1] = map[r][c]
 		map[r][c] = "."
-		return r, c + 1, false
+		return r, c + 1
 	elseif move == "^" then
 		if map[r - 1][c] == "[" then
 			move_cell(map, r - 1, c, move)
@@ -80,7 +80,7 @@ local function move_cell(map, r, c, move)
 		end
 		map[r - 1][c] = map[r][c]
 		map[r][c] = "."
-		return r - 1, c, false
+		return r - 1, c
 	elseif move == "v" then
 		if map[r + 1][c] == "[" then
 			move_cell(map, r + 1, c, move)
@@ -91,9 +91,9 @@ local function move_cell(map, r, c, move)
 		end
 		map[r + 1][c] = map[r][c]
 		map[r][c] = "."
-		return r + 1, c, false
+		return r + 1, c
 	end
-	return r, c, false
+	return r, c
 end
 
 local function transform_map(map)
