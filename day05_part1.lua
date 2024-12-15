@@ -55,7 +55,7 @@ end
 
 local function update_middle_page(update)
 	local middle_index = math.floor(#update / 2) + (#update % 2 == 0 and 0 or 1)
-	return update[middle_index]
+	return math.floor(update[middle_index])
 end
 
 local function run()

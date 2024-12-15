@@ -13,7 +13,7 @@
     {
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
-          lua
+          lua5_3_compat
         ];
       };
     };

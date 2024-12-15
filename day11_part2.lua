@@ -34,7 +34,6 @@ local function run()
 
 	local result = 0
 	for i, s in ipairs(stones) do
-		print("doing stone " .. tostring(i))
 		result = result + expand_stone(s, 75)
 	end
 

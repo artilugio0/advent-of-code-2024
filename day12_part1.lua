@@ -74,10 +74,6 @@ local function perimeter(map, r, c, seen)
 	return left_perimeter + right_perimeter + up_perimeter + down_perimeter + this_perimeter
 end
 
-local function sides(map, r, c, seen)
-
-end
-
 local function run()
 	local map = read_input()
 	local seen = {}

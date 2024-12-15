@@ -19,7 +19,7 @@ local function can_be_made_true(result, values)
 	end
 
 	return can_be_made_true(result - last, first_values)
-		or result % last == 0 and can_be_made_true(result / last, first_values)
+		or result % last == 0 and can_be_made_true(math.floor(result / last), first_values)
 end
 
 local function run()

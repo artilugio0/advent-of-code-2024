@@ -24,7 +24,7 @@ local function run()
 				table.insert(new_arrangement, tonumber(string.sub(n, 1, half_index)))
 				table.insert(new_arrangement, tonumber(string.sub(n, half_index + 1)))
 			else
-				table.insert(new_arrangement, tostring(n * 2024))
+				table.insert(new_arrangement, tonumber(n * 2024))
 			end
 		end
 
