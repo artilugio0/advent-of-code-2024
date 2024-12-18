@@ -3,8 +3,14 @@ local day18 = require("day18_part1")
 local function run()
 	local bytes = day18.read_input()
 
-	local limit = 1024
+	local min_limit = 1024
+	local max_limit = #bytes
 	while true do
+		if math.abs(min_limit - max_limit) <= 1 then
+			break
+		end
+		local limit = math.floor((min_limit + max_limit) / 2)
+
 		if limit % 100 == 0 then
 			print(limit)
 		end
@@ -28,11 +34,13 @@ local function run()
 
 		local result = day18.steps_to_exit(map, 0, 0, map.rows - 1, map.cols - 1)
 		if result == 1 / 0 then
-			print(string.format("%d,%d", bytes[limit][2], bytes[limit][1]))
-			break
+			max_limit = limit
+		else
+			min_limit = limit
 		end
-		limit = limit + 1
 	end
+
+	print(string.format("%d,%d", bytes[max_limit][2], bytes[max_limit][1]))
 end
 
 run()
