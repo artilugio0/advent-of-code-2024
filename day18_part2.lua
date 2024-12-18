@@ -11,10 +11,6 @@ local function run()
 		end
 		local limit = math.floor((min_limit + max_limit) / 2)
 
-		if limit % 100 == 0 then
-			print(limit)
-		end
-
 		local map = {}
 		for r = 0, bytes.rows - 1 do
 			map[r] = {}
@@ -33,7 +29,7 @@ local function run()
 		end
 
 		local result = day18.steps_to_exit(map, 0, 0, map.rows - 1, map.cols - 1)
-		if result == 1 / 0 then
+		if result == nil then
 			max_limit = limit
 		else
 			min_limit = limit
