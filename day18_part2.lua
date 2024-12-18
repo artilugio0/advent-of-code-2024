@@ -28,7 +28,7 @@ local function run()
 			map[byte[1]][byte[2]] = true
 		end
 
-		local result = day18.steps_to_exit(map, 0, 0, map.rows - 1, map.cols - 1)
+		local result = day18.bfs_exit(map, 0, 0, map.rows - 1, map.cols - 1)
 		if result == nil then
 			max_limit = limit
 		else

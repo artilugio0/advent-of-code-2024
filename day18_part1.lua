@@ -27,7 +27,7 @@ local function read_input()
 	return bytes
 end
 
-local function steps_to_exit(map, sr, sc, er, ec)
+local function bfs_exit(map, sr, sc, er, ec)
 	local adj = function(r, c)
 		local a = {}
 		if map[r - 1] ~= nil and not map[r - 1][c] then
@@ -94,14 +94,14 @@ local function run()
 		map[byte[1]][byte[2]] = true
 	end
 
-	local result = steps_to_exit(map, 0, 0, map.rows - 1, map.cols - 1)
+	local result = bfs_exit(map, 0, 0, map.rows - 1, map.cols - 1)
 	print(result)
 end
 
 if pcall(debug.getlocal, 4, 1) then
 	return {
 		read_input = read_input,
-		steps_to_exit = steps_to_exit,
+		bfs_exit = bfs_exit,
 	}
 else
 	run()
